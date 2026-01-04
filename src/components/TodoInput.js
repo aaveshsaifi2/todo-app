@@ -10,14 +10,14 @@ function TodoInput({ addTodo }) {
   };
 
   return (
-    <>
+    <div className="input-box">
       <input
         value={text}
         onChange={(e) => setText(e.target.value)}
-        placeholder="Enter todo"
+        placeholder="Enter a todo..."
       />
       <button onClick={handleAdd}>Add</button>
-    </>
+    </div>
   );
 }
 

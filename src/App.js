@@ -1,39 +1,40 @@
 import { useState } from "react";
+import "./App.css";
 import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
 
 function App() {
-    const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState([]);
 
-    //create
-    const addTodo = (text) => {
-        setTodos([...todos,{id: Date.now(), text}]);
-    };
+  const addTodo = (text) => {
+    setTodos([...todos, { id: Date.now(), text }]);
+  };
 
-    //delete
-    const deleteTodo = (id) => {
-        setTodos(todos.filter(todos => todos.id !==id));
-    };
+  const deleteTodo = (id) => {
+    setTodos(todos.filter(todo => todo.id !== id));
+  };
 
-    //update
-    const updateTodo = (id, newText) => {
-        setTodos(
-            todos.map(todo =>
-                todo.id === id ? {...todo, text: newText} : todo
-            )
-        );
-    };
+  const updateTodo = (id, newText) => {
+    setTodos(
+      todos.map(todo =>
+        todo.id === id ? { ...todo, text: newText } : todo
+      )
+    );
+  };
 
-    return (
-        <>
-        <TodoInput addTodo={addTodo}/>
-        <TodoList
+  return (
+    <div className="app">
+      <h2>Todo App</h2>
+
+      <TodoInput addTodo={addTodo} />
+
+      <TodoList
         todos={todos}
         deleteTodo={deleteTodo}
         updateTodo={updateTodo}
-        />
-        </>
-    );
+      />
+    </div>
+  );
 }
 
 export default App;
